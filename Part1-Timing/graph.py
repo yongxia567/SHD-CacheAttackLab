@@ -1,9 +1,14 @@
 import os
 import json
+import sys
 import matplotlib.pyplot as plt
 import numpy as np
 from tqdm import tqdm
 from datetime import datetime
+
+if sys.version_info < (3,0):
+    print("Run me with python3, not python2!")
+    sys.exit(1)
 
 num_runs = 100
 dict_of_dict_of_lists = dict()
