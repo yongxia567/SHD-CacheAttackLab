@@ -24,7 +24,8 @@ L3-DRAM threshold:
 
 ## 2-2
 
-**If the victim want to read the kth byte of a file, where k is a secret, how can he/she avoid leaking the secret to the attacker?**
+**In the victim's pseudocode above, the victim attempts to load the data indexed by `flag` into the `value` variable. How can you change the victim's code to load the desired data without leaking the flag to the attacker?**
+
 
 ## 3-1
 

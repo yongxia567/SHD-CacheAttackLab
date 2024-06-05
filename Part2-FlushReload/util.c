@@ -30,9 +30,6 @@ CYCLES measure_one_block_access_time(ADDR_PTR addr)
 
 /*
  * CLFlushes the given address.
- * 
- * Note: clflush is provided to help you debug and should not be used in your
- * final submission
  */
 void clflush(ADDR_PTR addr)
 {
