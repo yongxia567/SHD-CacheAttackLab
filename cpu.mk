@@ -1,0 +1,5 @@
+CC=gcc
+CFLAGS=-O0 -I /usr/local
+SENDER_CPU=0
+RECEIVER_CPU=1
+
