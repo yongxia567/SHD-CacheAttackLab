@@ -15,7 +15,7 @@
 // Function to read the time stamp counter, which is called tsc for short
 // "rdtscpp" returns a 32bit unsigned integer
 // "rdtscpp64" return a 64 bit unsigned integer
-// Details in https://www.felixcloutier.com/x86/rdtscp
+// Details in https://www.felixcloutier.com/x86/rdtscpp
 static inline uint32_t rdtscpp() {
     uint32_t rv;
     asm volatile ("rdtscpp": "=a" (rv) :: "edx", "ecx");
@@ -98,7 +98,7 @@ int compare(const void *p1, const void *p2) {
 
 
 // Print out the latencies you measured
-void print_results_plaintext(uint64_t* dram, uint64_t* l1, uint64_t* l2, uint64_t* l3) {
+void print_results(uint64_t* dram, uint64_t* l1, uint64_t* l2, uint64_t* l3) {
     qsort(dram, SAMPLES, sizeof(uint64_t), compare);
     qsort(l1, SAMPLES, sizeof(uint64_t), compare);
     qsort(l2, SAMPLES, sizeof(uint64_t), compare);
@@ -120,7 +120,7 @@ void print_results_plaintext(uint64_t* dram, uint64_t* l1, uint64_t* l2, uint64_
 }
 
 // Format the latencies for part 1.5
-void print_results_for_visualization(uint64_t* dram, uint64_t* l1, uint64_t* l2, uint64_t* l3)
+void print_results_for_python(uint64_t* dram, uint64_t* l1, uint64_t* l2, uint64_t* l3)
 {
     qsort(dram, SAMPLES, sizeof(uint64_t), compare);
     qsort(l1,   SAMPLES, sizeof(uint64_t), compare);

